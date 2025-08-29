@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'convocatorias_sena',
         'USER': 'root',
-        'PASSWORD': 'adsocauca',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306'
     }
