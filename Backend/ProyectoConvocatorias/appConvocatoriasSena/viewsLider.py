@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from appConvocatoriasSena.models import Convocatia,TipoConvocatoria
+from appConvocatoriasSena.models import Convocatoria,TipoConvocatoria
 from django.db import Error,transaction
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
