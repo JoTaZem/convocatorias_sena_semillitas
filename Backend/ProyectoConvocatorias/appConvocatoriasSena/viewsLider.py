@@ -10,7 +10,7 @@ formato_fecha="%Y-%m-%d %H:%M:%S"
 csrf_exempt
 def addConvocatoria(request):
     try:
-        nombre: request.POST.get("txtNombre")
+        nombre= request.POST.get("txtNombre")
         idTipo = request.POST.get("cbTipoConvocatoria")
         tipo = TipoConvocatoria.objects.get(pk=idTipo)
         cantidadBeneficiarios = request.POST.get("txtCantidadBeneficiarios")
@@ -34,6 +34,4 @@ def addConvocatoria(request):
         mensaje = "Error al registrar la convocatoria: "+str(error)
     retorno={"mensaje":mensaje}
     return JsonResponse(retorno)
-        
-         
 
