@@ -28,3 +28,12 @@ def addConvocatoria(request):
             conFechaFin = fecha_fin,
             conDocumento = documento
         )
+        convocatoria.save()
+        mensaje = "Convocatoria registrada correctamente"
+    except Error as error:
+        mensaje = "Error al registrar la convocatoria: "+str(error)
+    retorno={"mensaje":mensaje}
+    return JsonResponse(retorno)
+        
+         
+
