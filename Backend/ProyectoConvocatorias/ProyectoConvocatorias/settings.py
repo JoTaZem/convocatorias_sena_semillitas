@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'ProyectoConvocatorias.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'sqlite': {
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
@@ -84,7 +84,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'convocatorias_sena',
         'USER': 'root',
-        'PASSWORD': 'adsocauca',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
         'PORT': '3306'
     }
