@@ -16,7 +16,14 @@ def addFuncionario(request):
             cargo          = request.POST['txtCargo']
 
             with transaction.atomic():
-                usuario = Usuario(usuIdentificacion=identificacion, first_name = nombre, last_name = apellido, email=correo, usuRol="Funcionario", username = correo)
+                usuario = Usuario(
+                    usuIdentificacion = identificacion, 
+                    first_name        = nombre, 
+                    last_name         = apellido, 
+                    email             = correo, 
+                    usuRol            = "Funcionario", 
+                    username          = correo
+                    )
                 usuario.save()
                 usuario.is_active = True
                 usuario.set_password("12345")

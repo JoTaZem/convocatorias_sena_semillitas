@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.urls import path
-from . import viewsLider,views
+from . import viewsLider, views, viewsFuncionarios
 
 urlpatterns = [
-    #path("admin/", views.home),
-    path("addConvocatoria/", viewsLider.addConvocatoria)
+    # path("", views.home),
+    path("addConvocatoria/", viewsLider.addConvocatoria, name="addConvocatoria"),
+    path("addFuncionario/", viewsFuncionarios.addFuncionario, name="addFuncionario"),
 ]
