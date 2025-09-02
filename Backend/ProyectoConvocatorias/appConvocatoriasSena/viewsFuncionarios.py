@@ -27,6 +27,7 @@ def addFuncionario(request):
         else:
             mensaje = "No permitido"
 
+
     except Error as e:
         transaction.rollback()
         mensaje = e
