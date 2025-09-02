@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate
 from django.contrib import auth
 
 # Create your views here.
+#def home(request):
+ #   return {"mensaje":"Hola mundo desde Django"}
 def home(request):
     return {"mensaje":"Hola mundo desde Django"}
 
