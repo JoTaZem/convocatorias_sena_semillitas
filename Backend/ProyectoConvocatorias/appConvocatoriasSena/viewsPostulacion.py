@@ -25,10 +25,10 @@ def postulacion(request):
                     a la convocatoria de nombre: <b>{convocatoria.conNombre.upper()}</b>.\
                         <br><br>Le recorfamos estar pendiente de los resultados"
 
-                    thread = threading.Thread(
-                        target = enviarCorreo, args = (asunto, mensajeCorreo, [aprendiz.aprUsuario.email], None)
-                    )
-                    thread.start()
+                thread = threading.Thread(
+                    target = enviarCorreo, args = (asunto, mensajeCorreo, [aprendiz.aprUsuario.email], None)
+                )
+                thread.start()
                 mensaje = "Postulacion registrada correctamente"
         else:
             mensaje = "No permitido"
