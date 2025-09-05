@@ -6,7 +6,7 @@ import ListarPostulados from "./componentes/ListarPostulados4";
 function App() {
   return (
     <div className="App">
-      <h1>Gestión de Convocatorias</h1>
+      <h1>Sistema De Gestion Para Aprendices</h1>
       <AgregarUsuario />
       <ListarPostulados/>
       <ListarBeneficiarios/>
@@ -17,3 +17,5 @@ function App() {
 }
 
 export default App;
+
+
