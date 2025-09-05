@@ -4,6 +4,9 @@ from django.db import Error,transaction
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
+from appConvocatoriasSena.views import enviarCorreo, generar_password
+import threading
+
 
 @csrf_exempt
 def addFuncionario(request):
@@ -26,10 +29,24 @@ def addFuncionario(request):
                     )
                 usuario.save()
                 usuario.is_active = True
-                usuario.set_password("12345")
+                
+                passwordGenerado = generar_password()
+                usuario.set_password(passwordGenerado)
+                usuario.save()
 
                 funcionario = Funcionario(funCargo=cargo, funUsuario=usuario)
                 funcionario.save()
+
+                asunto = "Registro de Usuario en el Sistema"
+                mensajeCorreo = f"Cordial Saludo <b>{nombres} {apellidos}</b> usted ha sido registrado\
+                en el sistema de Gestion de Convocatorias para aprendices del CTPI SENA Cauca\
+                <br><br>nos permtimos enviar las credenciales de ingreso al sistema<br><br>\
+                <b>Username:</b> {correo} </br>\
+                <b>Password:</b> {passwordGenerado} </br>\
+                la URL del sistema es: https://127.0.0.1:8000/"
+                thread = threading.Thread(
+                    target=enviarCorreo, arg=(asunto, mensajeCorreo, [correo],None))
+                thread.start()
             mensaje = "funcionaria agregado correctamente..."
         else:
             mensaje = "No permitido"
