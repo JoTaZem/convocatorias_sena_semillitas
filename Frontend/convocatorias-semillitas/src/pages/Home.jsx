@@ -1,5 +1,5 @@
 import React from "react";
-import PiePagina from "../componentes/PiePagina.jsx";
+//import PiePagina from "../componentes/PiePagina.jsx";
 
 const Home = () => {
   return (
@@ -58,7 +58,6 @@ const Home = () => {
       </main>
 
       {/* Pie de página */}
-      <PiePagina />
     </div>
   );
 };
