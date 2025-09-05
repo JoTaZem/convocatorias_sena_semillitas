@@ -19,7 +19,7 @@ function ListarPostulados() {
 
   return (
     <div className="container">
-      <h2>📋 Listado de Postulados</h2>
+      <h2> Listar Postulados</h2>
       <table className="postulados-table">
         <thead>
           <tr>

@@ -24,7 +24,7 @@ function AgregarUsuario() {
         </h2>
         
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Campo Nombre */}
+          {}
           <div>
             <label className="block text-gray-700 font-medium mb-1">
               Nombre:

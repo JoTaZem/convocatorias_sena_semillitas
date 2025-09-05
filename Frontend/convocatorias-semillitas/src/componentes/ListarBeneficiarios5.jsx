@@ -35,7 +35,7 @@ function ListarBeneficiarios() {
 
   return (
     <div className="container">
-      <h2>Listado de Beneficiarios</h2>
+      <h2>Listar Beneficiarios</h2>
       {beneficiarios.length > 0 ? (
         <table border="1" cellPadding="10" style={{ marginTop: "15px", width: "100%", textAlign: "center" }}>
           <thead>
