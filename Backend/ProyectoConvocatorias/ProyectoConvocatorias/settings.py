@@ -41,9 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'appConvocatoriasSena',
+    'rest_framework',
+    'corsheaders',
+    'coreapi'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -146,3 +150,7 @@ EMAIL_HOST_USER     = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_PORT          = 587
 EMAIL_USE_TLS       = True
+
+REST_FRAMEWORK = {
+    "DEFAUL_SCHEMA_CLASS" : "rest_framework.schemas.coreapi.AutoSchema"
+}
