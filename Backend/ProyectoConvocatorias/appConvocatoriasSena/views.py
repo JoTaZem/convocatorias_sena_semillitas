@@ -10,30 +10,35 @@ import string
 import random
 from django.http import JsonResponse
 
-# Create your views here.
-#def home(request):
- #   return {"mensaje":"Hola mundo desde Django"}
+
 def home(request):
-    return {"mensaje":"Hola mundo desde Django"}
+    return JsonResponse({"mensaje": "Hola mundo desde Django"})
+
 
 def enviarCorreo(asunto=None, mensaje=None, destinatario=None, archivo=None):
     remitente = settings.EMAIL_HOST_USER
     template = get_template('enviarCorreo.html')
-    contenido = template.render({
-        'mensaje' : mensaje
-    })
+    contenido = template.render({'mensaje': mensaje})
+
     try:
+        # cuerpo en texto plano como fallback
         correo = EmailMultiAlternatives(
-            asunto, mensaje, remitente, destinatario
+            subject=asunto,
+            body=mensaje or "Este correo requiere un cliente con soporte HTML.",
+            from_email=remitente,
+            to=destinatario
         )
         correo.attach_alternative(contenido, "text/html")
-        if archivo != None:
+
+        if archivo:
             correo.attach_file(archivo)
-        correo.send(fail_silently=True)
 
+        correo.send(fail_silently=False)
+        print("Correo enviado correctamente")
 
-    except SMTPException as e:
-        print(e)
+    except Exception as e:
+        print(f"Error al enviar correo: {e}")
+
 
 @csrf_exempt
 def login(request):
@@ -45,24 +50,23 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
                 if user.usuRol == "Lider":
-                    mensaje = f"Usuario {user.username} con el rol de Lider ha iniciado la sesion"
+                    mensaje = f"Usuario {user.username} con el rol de Líder ha iniciado sesión"
                 elif user.usuRol == "Funcionario":
-                    mensaje = f"Usuario {user.username} con el rol de Funcionario ha iniciado la sesion"
+                    mensaje = f"Usuario {user.username} con el rol de Funcionario ha iniciado sesión"
                 else:
-                    mensaje = f"Usuario {user.username} con el rol de Aprendiz ha iniciado la sesion"
+                    mensaje = f"Usuario {user.username} con el rol de Aprendiz ha iniciado sesión"
             else:
-                mensaje = "Usuario o contrasena incorrectas"
+                mensaje = "Usuario o contraseña incorrectas"
         
         except Exception as e:
             mensaje = str(e)
 
-        retorno = {
-            "mensaje" : mensaje
-        }
-            
-    return JsonResponse(retorno)
+        return JsonResponse({"mensaje": mensaje})
+    
+    return JsonResponse({"mensaje": "Método no permitido"}, status=405)
 
-def generar_password(longitub=12):
+
+def generar_password(longitud=12):
     caracteres = string.ascii_letters + string.digits + string.punctuation
-    password = ''.join(random.choice(caracteres) for _ in range(longitub))
+    password = ''.join(random.choice(caracteres) for _ in range(longitud))
     return password
