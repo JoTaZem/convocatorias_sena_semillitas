@@ -42,7 +42,7 @@ function ListarPostulados() {
       </table>
 
       {/* Un poco de estilo en CSS */}
-      <style jsx>{`
+      <style >{`
         .container {
           margin: 20px;
           padding: 20px;
