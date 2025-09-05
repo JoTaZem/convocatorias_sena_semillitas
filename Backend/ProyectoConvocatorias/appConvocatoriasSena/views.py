@@ -6,6 +6,9 @@ from smtplib import SMTPException
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate
 from django.contrib import auth
+import string
+import random
+from django.http import JsonResponse
 
 # Create your views here.
 #def home(request):
@@ -58,3 +61,8 @@ def login(request):
         }
             
     return JsonResponse(retorno)
+
+def generar_password(longitub=12):
+    caracteres = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(random.choice(caracteres) for _ in range(longitub))
+    return password
