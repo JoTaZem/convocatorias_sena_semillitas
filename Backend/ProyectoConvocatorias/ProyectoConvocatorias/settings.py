@@ -152,5 +152,5 @@ EMAIL_PORT          = 587
 EMAIL_USE_TLS       = True
 
 REST_FRAMEWORK = {
-    "DEFAUL_SCHEMA_CLASS" : "rest_framework.schemas.coreapi.AutoSchema"
+    "DEFAULT_SCHEMA_CLASS" : "rest_framework.schemas.coreapi.AutoSchema"
 }
