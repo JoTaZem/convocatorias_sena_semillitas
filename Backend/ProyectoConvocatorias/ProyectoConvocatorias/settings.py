@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'appConvocatoriasSena',
+    'rest_framework',
+    'corsheaders',
+    'coreapi',
+    
 ]
 
 MIDDLEWARE = [
