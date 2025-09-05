@@ -11,13 +11,7 @@ import PiePagina from "./pages/PiePagina.jsx";
 const App = ()=>{
   return (
     <>
-    <div className="App">
-      <h1>Gestión de Convocatorias</h1>
-      <Home/>
-      <PiePagina />
-      <AppRouter/>
-
-    </div>
+    <AppRouter/>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import useListarConvocatorias from "../../hooks/useListarConvocatorias"
+import useListarConvocatorias from "../../hooks/useListarModelo"
 
 const ListConvocatorias = () =>{
     const {listaConvocatorias, cargando} = useListarConvocatorias()

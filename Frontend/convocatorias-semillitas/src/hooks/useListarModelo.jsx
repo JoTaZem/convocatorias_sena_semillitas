@@ -1,29 +1,29 @@
 import { useState, useEffect, useCallback } from "react"
 const API_URL = "http://localhost:8000/api/convocatoria/"
 
-const useListarConvocatorias= ()=> {
+const useListarModelo= ()=> {
     const [listaConvocatorias, setLista] = useState([])
     const [cargando, setCargando] = useState(true)
 
     const obtenerConvocatorias = useCallback(() => {
-    fetch(`${API_URL}`)
+    fetch(`${URL_API}${valor}/`)
       .then(res=>res.json())
-      .then((data) => {
-        console.log(data)
-        setLista(data)
-        setCargando(false)
+      .then(datos => {
+        
+        setLista(datos)
+        
       })
-      .catch((error) => {
-        console.error(error)
-        setCargando(false)
+      .catch(error => {
+        console.log(error)
+        
       });
     }, []);
     
     useEffect(() => {
-        obtenerConvocatorias()
-    }, [])
+        obtenerLista()
+    }, [obtenerLista])
     
-    return { listaConvocatorias, cargando };
+    return lista;
 }
-export default useListarConvocatorias;
+export default useListarModelo;
 
