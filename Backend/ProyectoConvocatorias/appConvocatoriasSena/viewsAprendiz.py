@@ -44,7 +44,7 @@ def addAprendiz(request):
                 <b>Username:</b> {correo} </br>\
                 <b>Password:</b> {passwordGenerado} </br>"
                 thread = threading.Thread(
-                    target=enviarCorreo, arg=(asunto, mensajeCorreo, [correo],none))
+                    target=enviarCorreo, arg=(asunto, mensajeCorreo, [correo],None))
                 thread.start()
             mensaje="Aprendiz Agregado Correctamente..."
         else:
