@@ -4,7 +4,7 @@ from django.db import Error,transaction
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
-from appConvocatoriasSena.views import enviarCorreo
+from appConvocatoriasSena.views import generar_password,enviarCorreo
 import threading
 
 formato_fecha = "%Y/%m/%d %H:%M:%S"
