@@ -21,22 +21,21 @@ def enviarCorreo(asunto=None, mensaje=None, destinatario=None, archivo=None):
     contenido = template.render({'mensaje': mensaje})
 
     try:
-        # cuerpo en texto plano como fallback
         correo = EmailMultiAlternatives(
             subject=asunto,
             body=mensaje or "Este correo requiere un cliente con soporte HTML.",
             from_email=remitente,
-            to=destinatario
+            to=destinatario,
         )
         correo.attach_alternative(contenido, "text/html")
 
-        if archivo:
+        if archivo != None:
             correo.attach_file(archivo)
 
-        correo.send(fail_silently=False)
+        correo.send(fail_silently=True)
         print("Correo enviado correctamente")
 
-    except Exception as e:
+    except SMTPException as e:
         print(f"Error al enviar correo: {e}")
 
 

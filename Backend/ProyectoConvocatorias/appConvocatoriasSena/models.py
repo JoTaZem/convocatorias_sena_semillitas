@@ -27,7 +27,7 @@ class Convocatoria(models.Model):
     conFechaInicio=models.DateTimeField()
     conFechaFinal=models.DateTimeField()
     conFechaCreacion = models.DateTimeField(auto_now_add=True)
-    conDocumento=models.FileField(upload_to='documentos/',blank=True, null= True)
+    conDocumento=models.FileField(upload_to='convocatorias/',blank=True, null= True)
     
     def __str__(self):
         return self.conNombre
